@@ -397,7 +397,8 @@ export async function getSceneUrlForHub(hub) {
   } else {
     sceneUrl = proxiedUrlFor(sceneUrl);
   }
-  return sceneUrl;
+  return 'https://uploads-prod.reticulum.io/files/e42af884-ae5f-4816-8e0b-eac113cdfc08.glb';
+  //return sceneUrl;
 }
 
 export async function updateEnvironmentForHub(hub, entryManager) {
