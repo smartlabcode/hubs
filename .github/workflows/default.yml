@@ -18,8 +18,8 @@ jobs:
       - uses: actions/checkout@v2
       - name : Stop server
         run: | 
-          pm2 stop hubs_server
-          pm2 stop hubs_admin_server
+          pm2 stop all
+          pm2 stop all
 
       - name: Install hubs deps
         run: npm i --force
