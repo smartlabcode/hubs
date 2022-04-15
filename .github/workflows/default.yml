@@ -1,0 +1,38 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name : Stop server
+        run: | 
+          pm2 stop hubs_server
+          pm2 stop hubs_admin_server
+
+      - name: Install hubs deps
+        run: npm i --force
+
+      - name: Install hubs admin deps
+        run: |
+          cd admin/
+          pwd
+          npm i --force
+          ls
+      
+      - name: Start hubs server
+        run: pm2 start hubs_server
+
+      - name: Start hubs admin server
+        run: pm2 start hubs_admin_server
