@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v2
       - name : Stop server
         run: | 
-          pm2 stop hubs_server
+          pm2 stop hubs
           pm2 stop hubs_admin_server
 
       - name: Install hubs deps
@@ -32,7 +32,7 @@ jobs:
           ls
       
       - name: Start hubs server
-        run: pm2 start hubs_server
+        run: pm2 start hubs
 
       - name: Start hubs admin server
         run: pm2 start hubs_admin_server
