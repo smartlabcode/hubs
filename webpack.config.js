@@ -53,7 +53,7 @@ function createHTTPSConfig() {
 
     fs.mkdirSync(path.join(__dirname, "certs"));
     fs.writeFileSync(path.join(__dirname, "certs", "cert.pem"), pems.cert);
-    fs.writeFileSync(path.join(__dirname, "certs", "key.pem"), pems.private);
+    fs.writeFileSync(path.join(__dirname, "certs", "key.pem"), pems.private); 
 
     return {
       key: pems.private,
@@ -61,6 +61,7 @@ function createHTTPSConfig() {
     };
   }
 }
+
 
 function getModuleDependencies(moduleName) {
   const deps = packageLock.dependencies;
@@ -315,6 +316,7 @@ module.exports = async (env, argv) => {
     },
     devtool: argv.mode === "production" ? "source-map" : "inline-source-map",
     devServer: {
+      disableHostCheck: true,
       https: createHTTPSConfig(),
       host: "0.0.0.0",
       public: `${host}:8080`,
