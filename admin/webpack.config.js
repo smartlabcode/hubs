@@ -144,7 +144,10 @@ module.exports = (env, argv) => {
       // Ignore media and sourcemaps when warning about file size.
       assetFilter(assetFilename) {
         return !/\.(map|png|jpg|gif|glb|webm)$/.test(assetFilename);
-      }
+      },
+      hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
     },
     module: {
       rules: [
