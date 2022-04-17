@@ -77,6 +77,21 @@ module.exports = (env, argv) => {
     });
   }
 
+  if (env.prod) {
+    const your_domain = "smartexpo.bitallium.com";
+    Object.assign(process.env, {
+      HOST: your_domain,
+      RETICULUM_SOCKET_SERVER: your_domain,
+      CORS_PROXY_SERVER: "hubs-proxy.com",
+      NON_CORS_PROXY_DOMAINS: `${your_domain},dev.reticulum.io`,
+      BASE_ASSETS_PATH: `https://${your_domain}:8989/`,
+      RETICULUM_SERVER: your_domain,
+      POSTGREST_SERVER: "",
+      ITA_SERVER: "",
+      HOST_IP: your_domain,
+    });
+  }
+
   const defaultHostName = "hubs.local";
   const host = process.env.HOST_IP || defaultHostName;
 
