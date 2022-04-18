@@ -43,7 +43,7 @@ function createHTTPSConfig() {
               },
               {
                 type: 2,
-                value: "hubs.local"
+                value: "smartexpo.bitallium.com"
               }
             ]
           }
@@ -186,7 +186,7 @@ async function fetchAppConfigAndEnvironmentVars() {
   process.env.SHORTLINK_DOMAIN = shortlink_domain;
   process.env.CORS_PROXY_SERVER = `${localIp}:8080/cors-proxy`;
   process.env.THUMBNAIL_SERVER = thumbnail_server;
-  process.env.NON_CORS_PROXY_DOMAINS = `${localIp},hubs.local,localhost`;
+  process.env.NON_CORS_PROXY_DOMAINS = `${localIp},smartexpo.bitallium.com,localhost`;
 
   return appConfig;
 }
@@ -223,15 +223,15 @@ module.exports = async (env, argv) => {
     if (env.localDev) {
       // Local Dev Environment (npm run local)
       Object.assign(process.env, {
-        HOST: "hubs.local",
-        RETICULUM_SOCKET_SERVER: "hubs.local",
+        HOST: "smartexpo.bitallium.com",
+        RETICULUM_SOCKET_SERVER: "smartexpo.bitallium.com",
         CORS_PROXY_SERVER: "hubs-proxy.local:4000",
-        NON_CORS_PROXY_DOMAINS: "hubs.local,dev.reticulum.io",
-        BASE_ASSETS_PATH: "https://hubs.local:8080/",
-        RETICULUM_SERVER: "hubs.local:4000",
+        NON_CORS_PROXY_DOMAINS: "smartexpo.bitallium.com,dev.reticulum.io",
+        BASE_ASSETS_PATH: "https://smartexpo.bitallium.com:8080/",
+        RETICULUM_SERVER: "smartexpo.bitallium.com:4000",
         POSTGREST_SERVER: "",
         ITA_SERVER: "",
-        UPLOADS_HOST: "https://hubs.local:4000"
+        UPLOADS_HOST: "https://smartexpo.bitallium.com:4000"
       });
     }
 
@@ -262,7 +262,7 @@ module.exports = async (env, argv) => {
   // In production, the environment variables are defined in CI or loaded from ita and
   // the app config is injected into the head of the page by Reticulum.
 
-  const host = process.env.HOST_IP || env.localDev || env.remoteDev ? "hubs.local" : "localhost";
+  const host = process.env.HOST_IP || env.localDev || env.remoteDev ? "smartexpo.bitallium.com" : "localhost";
 
   const liveReload = !!process.env.LIVE_RELOAD || false;
 
@@ -321,7 +321,7 @@ module.exports = async (env, argv) => {
       host: "0.0.0.0",
       public: `${host}:8080`,
       useLocalIp: true,
-      allowedHosts: [host, "hubs.local"],
+      allowedHosts: [host, "smartexpo.bitallium.com"],
       headers: devServerHeaders,
       hot: liveReload,
       inline: liveReload,

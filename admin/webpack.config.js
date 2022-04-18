@@ -36,7 +36,7 @@ function createHTTPSConfig() {
               },
               {
                 type: 2,
-                value: "hubs.local"
+                value: "smartexpo.bitallium.com"
               }
             ]
           }
@@ -66,12 +66,12 @@ module.exports = (env, argv) => {
 
   if (env.local) {
     Object.assign(process.env, {
-      HOST: "hubs.local",
-      RETICULUM_SOCKET_SERVER: "hubs.local",
+      HOST: "smartexpo.bitallium.com",
+      RETICULUM_SOCKET_SERVER: "smartexpo.bitallium.com",
       CORS_PROXY_SERVER: "hubs-proxy.local:4000",
-      NON_CORS_PROXY_DOMAINS: "hubs.local,dev.reticulum.io",
-      BASE_ASSETS_PATH: "https://hubs.local:8989/",
-      RETICULUM_SERVER: "hubs.local:4000",
+      NON_CORS_PROXY_DOMAINS: "smartexpo.bitallium.com,dev.reticulum.io",
+      BASE_ASSETS_PATH: "https://smartexpo.bitallium.com:8989/",
+      RETICULUM_SERVER: "smartexpo.bitallium.com:4000",
       POSTGREST_SERVER: "",
       ITA_SERVER: ""
     });
@@ -92,7 +92,7 @@ module.exports = (env, argv) => {
     });
   }
 
-  const defaultHostName = "hubs.local";
+  const defaultHostName = "smartexpo.bitallium.com";
   const host = process.env.HOST_IP || defaultHostName;
 
   // Remove comments from .babelrc
