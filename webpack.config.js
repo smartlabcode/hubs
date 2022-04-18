@@ -238,10 +238,10 @@ module.exports = async (env, argv) => {
     if (argv.mode === "production") {
       if (env.prodVps) {
         // Production on VPS
-        const your_domain = "samartexpo.bitallium.com";
+        const your_domain = "smartexpo.bitallium.com";
         
         // We dont use the reticulum port 4000 because later we will proxy pass from port 443 to 4000
-    
+
         Object.assign(process.env, {
           HOST_IP: your_domain,
           SHORTLINK_DOMAIN: `${your_domain}`,
